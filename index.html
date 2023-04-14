@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Gravity Bird</title>
+    <style>
+        .slidecontainer {
+            width: 100%; /* Width of the outside container */
+        }
+
+        /* The slider itself */
+        .slider {
+            -webkit-appearance: none;  /* Override default CSS styles */
+            appearance: none;
+            width: 100%; /* Full-width */
+            height: 25px; /* Specified height */
+            background: #d3d3d3; /* Grey background */
+            outline: none; /* Remove outline */
+            opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+            -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+            transition: opacity .2s;
+        }
+
+        /* Mouse-over effects */
+        .slider:hover {
+            opacity: 1; /* Fully shown on mouse-over */
+        }
+
+        /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none; /* Override default look */
+            appearance: none;
+            width: 25px; /* Set a specific slider handle width */
+            height: 25px; /* Slider handle height */
+            background: #04AA6D; /* Green background */
+            cursor: pointer; /* Cursor on hover */
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px; /* Set a specific slider handle width */
+            height: 25px; /* Slider handle height */
+            background: #04AA6D; /* Green background */
+            cursor: pointer; /* Cursor on hover */
+        }
+
+    </style>
+</head>
+<body>
+    <h2 style="text-align:center;">Gravity Bird</h2>
+        <div id="game-container">
+            <canvas id="game-canvas" width="300" height="450"></canvas>
+            <div id="score-display">0</div>
+        </div>
+        <div id="end-menu">
+            <h3>Gravity Bird</h3>
+            <h5>Press any key besides Space to jump!</h5>
+            <p> Score: <span id="end-score"></span></p>
+            <p> Best: <span id="best-score"></span></p>
+            <p> Preset to Earth Settings - Max Mass 400 times Earth (Little bigger than Jupiter</p>
+            <p>
+                The Planets Mass: (Log base 2 of the Ratio of mass of the planet compared to Earth)
+                <input type="range" min="-10" max="10" value="0" class="slider" id="Mass">
+            </p>
+            <p>
+                The Planets Radius: (km)
+                <input type="range" min="1" max="70000" value="6371" class="slider" id="Radius">
+            </p>
+            <button id="restart-button">Start Game</button>
+        </div>
+        <p style="text-align:center; font-family: Georgia, 'Times New Roman', Times, serif;"> Note: Gravity in the game calculated by using Planet Radius and Mass<br>
+            with Gravitational force equation: Fg = G * (Mass of Planet)/(Radius^2)<br>
+            We assume the bird object has constant mass, thus is not necessary to include<br>
+            in our equation. For mathematical logistics, mass values are ratios on the slider <br>
+            that's calculated in the code. (Mass of any planet in kg is many digits). Same <br>
+            for radius, the km is converted to m in the code</p>
+     <script src="game.js"></script> 
+</body>
+</html>
